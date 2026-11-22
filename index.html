@@ -4,8 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#10352b">
-<title>Buy and Build</title>
+<title>Buy and Build: a private equity strategy game, free in your browser</title>
 <meta name="description" content="A private equity strategy game. Buy a company in Dallas/Fort Worth, buy the towns around it, race two rival funds, and sell. Free to play in your browser.">
+<link rel="canonical" href="https://buyandbuildgame.com/">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="preload" as="image" href="/landing.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="/fonts/bodoni-moda-700.woff2" crossorigin>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -18,6 +22,24 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Buy and Build. A private equity strategy game. A red game piece on a miniature map, with the Dallas skyline behind it.">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Buy and Build","url":"https://buyandbuildgame.com/","image":"https://buyandbuildgame.com/og.jpg",
+"description":"A private equity strategy game. You run a $50 million fund: buy a company in Dallas/Fort Worth with a loan, buy the towns around it before two rival funds do, read real financial statements every quarter, and choose the moment to sell.",
+"genre":["Strategy","Business simulation","Educational"],"gamePlatform":["Web browser","Mobile web"],"applicationCategory":"Game","operatingSystem":"Any","playMode":"SinglePlayer","inLanguage":"en",
+"author":{"@type":"Person","name":"Kyle Becker"},
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},
+"trailer":{"@type":"VideoObject","name":"Buy and Build trailer","description":"Buy it. Build it. Sell it. A 75 second look at the game.","contentUrl":"https://buyandbuildgame.com/trailer.mp4","thumbnailUrl":"https://buyandbuildgame.com/trailer-poster.jpg","uploadDate":"2026-11-16"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is Buy and Build free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The whole game is free to play and has no ads."}},
+{"@type":"Question","name":"How long does a game take?","acceptedAnswer":{"@type":"Answer","text":"A quick deal is one company and takes about 25 minutes. The full fund is ten years of deals and takes 60 to 90 minutes. It saves as you go."}},
+{"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No. You can play the whole game as a guest. An account keeps your career on every device and puts your best score on the leaderboard."}},
+{"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. It plays in the browser on a phone, a tablet or a computer. There is nothing to install."}},
+{"@type":"Question","name":"Do I need to know finance?","acceptedAnswer":{"@type":"Answer","text":"No. Each idea is explained in plain words at the moment you need it."}},
+{"@type":"Question","name":"What will I learn?","acceptedAnswer":{"@type":"Answer","text":"How a private equity deal works from the purchase to the sale: what a loan does to the return, why add-ons raise the price a buyer pays, how to read the three financial statements, and when to sell."}},
+{"@type":"Question","name":"Can I use it with a team or a class?","acceptedAnswer":{"@type":"Answer","text":"Yes. Make a group in the game, share its link, and a private leaderboard ranks your players. There is a session guide with debrief questions."}}]}
+</script>
 <script>
   // An old link to the game with its settings (?seed=7) goes straight into the game.
   if (location.search) location.replace('/play/' + location.search + location.hash);
@@ -70,6 +92,7 @@
   .points h2 { margin: 0 0 6px; font: 700 24px/1.15 var(--display); }
   .points p { margin: 0; color: var(--ink-2); font-size: 16px; }
   .mentor { max-width: 1080px; margin: 28px auto 0; text-align: center; color: var(--soft); font-size: 16px; }
+  .points .mentor { color: var(--soft); } /* the rule for a paragraph on a paper card must not reach this line: it sits on felt */
   .mentor strong { color: var(--plate); font-weight: 600; }
 
   .signup { background: var(--felt-2); padding: 0 24px 64px; }
@@ -90,6 +113,27 @@
   .signup .small { margin-top: 12px; font-size: 14px; }
   .signup .small a { color: var(--ink); }
 
+  .see { background: var(--felt-3); padding: 60px 24px 64px; }
+  .see h2, .faq h2 { margin: 0 auto 8px; max-width: 1080px; font: 700 clamp(30px, 4vw, 40px)/1.1 var(--display); }
+  .see .sub { margin: 0 auto 26px; max-width: 1080px; color: var(--soft); }
+  .see .grid { max-width: 1080px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .see figure { margin: 0; }
+  .see .wide { grid-column: 1 / -1; }
+  .see img { display: block; width: 100%; height: auto; border: 1px solid var(--brass-line); border-radius: 6px; box-shadow: 0 12px 26px rgba(0,0,0,.45); background: var(--felt-2); }
+  .see figcaption { margin-top: 10px; font-size: 15px; color: var(--soft); }
+  .groups { background: var(--felt-2); border-top: 1px solid rgba(211,173,98,.3); padding: 56px 24px; }
+  .groups .in { max-width: 1080px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px 40px; }
+  .groups h2 { margin: 0 0 6px; font: 700 clamp(28px, 3.6vw, 36px)/1.1 var(--display); }
+  .groups p { margin: 0; max-width: 34em; color: #e9e2cf; }
+  .faq { background: var(--felt-2); padding: 8px 24px 64px; }
+  .faq .in { max-width: 760px; margin: 0 auto; }
+  .faq h2 { margin: 0 0 14px; }
+  .faq details { background: var(--plate); color: var(--ink); border-radius: 2px; margin-top: 8px; }
+  .faq summary { cursor: pointer; padding: 16px 18px; font-weight: 600; }
+  .faq summary:focus-visible { outline-color: var(--ink); outline-offset: -3px; }
+  .faq details p { margin: 0; padding: 0 18px 16px; color: var(--ink-2); }
+  .faq details a { color: var(--ink); }
+
   footer { padding: 26px 24px 34px; text-align: center; font-size: 14px; color: var(--soft); background: var(--felt-3); }
   footer a { color: var(--brass); }
 
@@ -107,6 +151,10 @@
     .actions { flex-direction: column; }
     .btn { width: 100%; }
     .points ol { grid-template-columns: 1fr; }
+    .see { padding: 44px 16px 48px; }
+    .see .grid { grid-template-columns: 1fr; }
+    .groups { padding: 44px 22px; }
+    .faq { padding: 4px 16px 48px; }
     .signup { padding: 0 16px 48px; }
     .signup form { padding: 20px 16px 18px; }
     .signup .btn { width: 100%; }
@@ -146,6 +194,40 @@
     <p class="mentor">Your mentor in the game is <strong>Adam Coffey</strong>, author of The Private Equity Playbook.</p>
   </section>
 
+  <section class="see" aria-labelledby="see-title">
+    <h2 id="see-title">See the game</h2>
+    <p class="sub">A turn is taken on the map. The numbers behind it are a full set of financial statements.</p>
+    <div class="grid">
+      <figure class="wide"><img src="/shots/turn.jpg" width="1280" height="800" loading="lazy" alt="A turn in the game. A map of twelve Dallas/Fort Worth towns shows which fund owns each one, beside the player's fund value, the investors' line and the moves for the quarter."><figcaption>Your turn. Every town holds one company, and the first fund to buy it owns the town.</figcaption></figure>
+      <figure><img src="/shots/town.jpg" width="780" height="1280" loading="lazy" alt="The card for one town on a phone, with the add-on for sale there, its price and the button that buys it."><figcaption>Tap a town to see its company and buy it.</figcaption></figure>
+      <figure><img src="/shots/books.jpg" width="780" height="1280" loading="lazy" alt="The key private equity metrics page on a phone, with profit growth, the loan gauge and the yearly return."><figcaption>Read the numbers every quarter.</figcaption></figure>
+      <figure><img src="/shots/result.jpg" width="780" height="1280" loading="lazy" alt="The end of a game on a phone: fund value against the investors' line, and how the three funds finished."><figcaption>Beat the investors' line, then the rival funds.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="groups" aria-labelledby="groups-title">
+    <div class="in">
+      <div>
+        <h2 id="groups-title">For teams and classes</h2>
+        <p>Play with a private equity team or a business school class. Make a group, share its link, and a private leaderboard ranks the room. A session guide and debrief questions are ready.</p>
+      </div>
+      <a class="btn ghost" href="/teams/" id="teams">See how a session runs</a>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-title">
+    <div class="in">
+      <h2 id="faq-title">Questions</h2>
+      <details><summary>Is it free?</summary><p>Yes. The whole game is free to play and has no ads.</p></details>
+      <details><summary>How long does a game take?</summary><p>A quick deal is one company and takes about 25 minutes. The full fund is ten years of deals and takes 60 to 90 minutes. It saves as you go.</p></details>
+      <details><summary>Do I need an account?</summary><p>No. You can play the whole game as a guest. An account keeps your career on every device and puts your best score on the leaderboard.</p></details>
+      <details><summary>Does it work on a phone?</summary><p>Yes. It plays in the browser on a phone, a tablet or a computer. There is nothing to install.</p></details>
+      <details><summary>Do I need to know finance?</summary><p>No. Each idea is explained in plain words at the moment you need it.</p></details>
+      <details><summary>What will I learn?</summary><p>How a private equity deal works from the purchase to the sale: what a loan does to the return, why add-ons raise the price a buyer pays, how to read the three financial statements, and when to sell. The game teaches how deals work. It does not give investment advice.</p></details>
+      <details><summary>Can I use it with a team or a class?</summary><p>Yes. Make a group in the game, share its link, and a private leaderboard ranks your players. <a href="/teams/">See the page for teams and classes</a>.</p></details>
+    </div>
+  </section>
+
   <section class="signup" aria-labelledby="signup-title">
     <form id="signup" novalidate>
       <h2 id="signup-title">Game news by email</h2>
@@ -160,7 +242,7 @@
   </section>
 </main>
 
-<footer>Buy and Build. <a href="/privacy.html">Privacy</a></footer>
+<footer>Buy and Build. <a href="/teams/">For teams and classes</a> · <a href="/guide/">Session guide</a> · <a href="/privacy.html">Privacy</a></footer>
 
 <dialog id="player" aria-label="Buy and Build trailer">
   <button class="close" type="button" id="close">Close</button>
@@ -174,6 +256,7 @@
   const video = document.getElementById('video');
   const count = (name, props) => { try { window.posthog.capture(name, props); } catch (e) { /* a count is never worth an error */ } };
   document.querySelector('.btn.primary[href="/play/"]').addEventListener('click', () => count('enter_game_click'));
+  document.getElementById('teams').addEventListener('click', () => count('teams_click'));
   document.getElementById('watch').addEventListener('click', () => {
     count('watch_video_click');
     dialog.showModal();

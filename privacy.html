@@ -3,10 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy: Private Equity Game</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<title>Privacy: Buy and Build</title>
+<link rel="canonical" href="https://buyandbuildgame.com/privacy.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
+  /* The typefaces come from this site, so opening the page tells no other company. */
+  @font-face { font-family: "Bodoni Moda"; font-weight: 700; font-display: swap; src: url(/fonts/bodoni-moda-700.woff2) format("woff2"); }
+  @font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-display: swap; src: url(/fonts/ibm-plex-sans-400.woff2) format("woff2"); }
+  @font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-display: swap; src: url(/fonts/ibm-plex-sans-600.woff2) format("woff2"); }
   :root { --ink: #1c2a24; --ink-2: #46524a; --plate: #f4ecd8; --felt: #10352b; --felt-2: #0b2620; --brass: #d3ad62; --brass-line: #a8823a; }
   * { box-sizing: border-box; }
   body { margin: 0; background: radial-gradient(circle at 50% 0, var(--felt), var(--felt-2)); color: var(--ink); font: 400 16px/1.6 'IBM Plex Sans', system-ui, sans-serif; min-height: 100vh; padding: 32px 16px; }
@@ -23,7 +27,7 @@
 <body>
 <main>
   <h1>Privacy</h1>
-  <p class="date">Private Equity Game. Last changed on November 22, 2026.</p>
+  <p class="date">Buy and Build. Last changed on November 23, 2026.</p>
 
   <p>You can play the whole game as a guest. A guest's progress stays in the browser on your device. A guest sends us only the anonymous counts described below.</p>
 
@@ -34,24 +38,34 @@
     <li>If you sign in with Google: your email address and your Google account id. We ask Google for nothing else.</li>
     <li>The name, fund name and game piece you choose.</li>
     <li>Your career, your saved full fund, and the result of each game you finish.</li>
+    <li>The groups you make or join. A group is a class or a team with its own leaderboard. We keep its name, its group code, who made it and who joined it.</li>
   </ul>
 
   <h2>Game news by email</h2>
   <p>On the front page, and at the end of a game played as a guest, you can give your email to get game news. We store that email, where you gave it, and the date. We use it only to send game news, a few emails a year. We do not use it to sign you in.</p>
   <p>It can be removed on request. Reply to any email from us and ask, and we delete it from the list.</p>
 
+  <h2>A request about a pilot</h2>
+  <p>On the page for teams and classes you can ask about a session for your group. We store what you type there: your name, your email, your organization, the kind and size of the group, and your note. We use it only to answer you. Ask us and we delete it.</p>
+
+  <h2>A shared result</h2>
+  <p>At the end of a game you can share your result. The link holds the game's number, the industry and your score, so a friend can play the same deal. It holds no name and nothing else about you.</p>
+
   <h2>Who can see it</h2>
   <p>The leaderboard shows your name, your fund name, your game piece and your best scores to everyone. Nobody else can see your email or your saved games.</p>
+  <p>The members of a group see each other's name, fund name, game piece and score on the leaderboard of that group. Only its members see that leaderboard. Nobody sees a list of the groups you are in.</p>
 
   <h2>What we count</h2>
   <p>We use PostHog, an analytics service, to count how the game is played. It counts these moments and nothing else:</p>
   <ul>
     <li>A page of the site or the game opened.</li>
-    <li>On the front page: a tap on Enter Game or Watch Video.</li>
-    <li>In the game: a game started, a company bought, an add-on bought, a company sold, a game finished, and an account created.</li>
+    <li>On the front page: a tap on Enter Game, Watch Video or the link for teams and classes.</li>
+    <li>In the game: a game started, a company bought, an add-on bought, a company sold, a game finished, an account created, a group made, a group joined, the end of the introduction, each year played, a result shared, and a shared link opened.</li>
+    <li>How long the game took to load, and a fault in the game if one happens, with its message and the page that was showing.</li>
+    <li>On the page for teams and classes: a request sent. The count carries the kind of group, never your name or email.</li>
     <li>On the front page and in the game: an email given for game news. The count carries where it was given, never the email.</li>
   </ul>
-  <p>Each count carries a few game facts, such as the mode, the industry, the place among the three funds and whether the fund beat the investors' line. It never carries your email, your password or a name you type.</p>
+  <p>Each count carries a few game facts, such as the mode, the industry, the place among the three funds and whether the fund beat the investors' line. It never carries your email, your password, a name you type or a group code.</p>
   <p>The counts are anonymous until you sign in. A random id kept in your browser groups them. Once you sign in, they are tied to your account id, which is a random number, not your email. Signing out goes back to a new random id.</p>
   <p>We do not record your screen, and we do not count every tap. If your browser asks sites not to track you (Do Not Track), nothing is counted.</p>
   <h2>What we do not do</h2>
@@ -61,7 +75,7 @@
   <p>Accounts and the list for game news are stored with Supabase, a database service, on servers in the United States. The counts are stored with PostHog, also in the United States.</p>
 
   <h2>Deleting your account</h2>
-  <p>Sign in, open Account on the title page, and choose Delete my account. This deletes your email, your progress and every score at once.</p>
+  <p>Sign in, open Account on the title page, and choose Delete my account. This deletes your email, your progress and every score at once. It also takes you out of every group, and deletes the groups you made.</p>
 
   <p><a href="./">Back to the game</a></p>
 </main>
