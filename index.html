@@ -72,6 +72,24 @@
   .mentor { max-width: 1080px; margin: 28px auto 0; text-align: center; color: var(--soft); font-size: 16px; }
   .mentor strong { color: var(--plate); font-weight: 600; }
 
+  .signup { background: var(--felt-2); padding: 0 24px 64px; }
+  .signup form { max-width: 640px; margin: 0 auto; background: var(--plate); color: var(--ink); border-top: 4px double var(--brass-line); border-radius: 2px; padding: 22px 22px 20px; }
+  .signup h2 { margin: 0 0 6px; font: 700 24px/1.15 var(--display); }
+  .signup p { margin: 0; color: var(--ink-2); font-size: 16px; }
+  .signup .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .signup input { flex: 1 1 240px; min-width: 0; min-height: 52px; padding: 0 14px; border: 2px solid #cdbf9d; border-radius: 4px; background: #fffdf6; color: var(--ink); font: 400 17px/1 var(--body); }
+  .signup input:focus { border-color: var(--brass-line); }
+  .signup input:focus-visible { outline-color: var(--ink); }
+  .signup .btn { min-height: 52px; padding: 0 24px; font-size: 17px; }
+  .signup .btn:disabled { opacity: .6; cursor: default; transform: none; }
+  .signup .btn:focus-visible { outline-color: var(--ink); }
+  .signup .status { margin-top: 12px; font-weight: 600; font-size: 15px; }
+  .signup .status:empty { display: none; }
+  .signup .status.bad { color: #a8321f; }
+  .signup .status.good { color: var(--ink); }
+  .signup .small { margin-top: 12px; font-size: 14px; }
+  .signup .small a { color: var(--ink); }
+
   footer { padding: 26px 24px 34px; text-align: center; font-size: 14px; color: var(--soft); background: var(--felt-3); }
   footer a { color: var(--brass); }
 
@@ -89,6 +107,9 @@
     .actions { flex-direction: column; }
     .btn { width: 100%; }
     .points ol { grid-template-columns: 1fr; }
+    .signup { padding: 0 16px 48px; }
+    .signup form { padding: 20px 16px 18px; }
+    .signup .btn { width: 100%; }
     dialog { width: 100vw; border-radius: 0; border: 0; }
     .close { top: auto; bottom: -54px; right: 12px; }
   }
@@ -124,6 +145,19 @@
     </ol>
     <p class="mentor">Your mentor in the game is <strong>Adam Coffey</strong>, author of The Private Equity Playbook.</p>
   </section>
+
+  <section class="signup" aria-labelledby="signup-title">
+    <form id="signup" novalidate>
+      <h2 id="signup-title">Game news by email</h2>
+      <p>Get new industries and the full fund leaderboard by email. A few emails a year.</p>
+      <div class="row">
+        <input id="signup-email" type="email" name="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" placeholder="Your email" aria-label="Your email" required>
+        <button class="btn primary" type="submit" id="signup-send">Send me news</button>
+      </div>
+      <p class="status" id="signup-status" role="status"></p>
+      <p class="small">We use your email only to send game news. Ask us and we remove it. <a href="/privacy.html">Privacy</a></p>
+    </form>
+  </section>
 </main>
 
 <footer>Buy and Build. <a href="/privacy.html">Privacy</a></footer>
@@ -138,7 +172,7 @@
 <script>
   const dialog = document.getElementById('player');
   const video = document.getElementById('video');
-  const count = (name) => { try { window.posthog.capture(name); } catch (e) { /* a count is never worth an error */ } };
+  const count = (name, props) => { try { window.posthog.capture(name, props); } catch (e) { /* a count is never worth an error */ } };
   document.querySelector('.btn.primary[href="/play/"]').addEventListener('click', () => count('enter_game_click'));
   document.getElementById('watch').addEventListener('click', () => {
     count('watch_video_click');
@@ -150,6 +184,36 @@
   document.getElementById('close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('close', stop);
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+
+  // Game news by email. The address goes to the game's server with its public key, the same as in src/net/config.js.
+  // The table takes new addresses and shows nothing back. See docs/backend.md.
+  const SERVER = { url: 'https://nxismujfgnfspguglbby.supabase.co', key: 'sb_publishable_F4Qb-Z7PKzpxOqO4VZYkPw_zMDtoj3L' };
+  const form = document.getElementById('signup');
+  const field = document.getElementById('signup-email');
+  const send = document.getElementById('signup-send');
+  const status = document.getElementById('signup-status');
+  const say = (text, tone) => { status.textContent = text; status.className = 'status ' + tone; };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = field.value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say('Type a full email address.', 'bad'); field.focus(); return; }
+    send.disabled = true; send.textContent = 'Sending';
+    let ok = false;
+    try {
+      const res = await fetch(SERVER.url + '/rest/v1/email_signups', {
+        method: 'POST',
+        headers: { apikey: SERVER.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ email, source: 'landing' }),
+      });
+      ok = res.ok || res.status === 409; // 409: the address is on the list already
+      if (!ok) say('Something went wrong. Try again.', 'bad');
+    } catch (err) { say('There is no connection. Try again when you are online.', 'bad'); }
+    send.disabled = false; send.textContent = 'Send me news';
+    if (!ok) return;
+    count('email_signup', { source: 'landing' });
+    form.querySelector('.row').remove();
+    say('Thank you. You are on the list for game news.', 'good');
+  });
 </script>
 </body>
 </html>
