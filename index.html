@@ -27,8 +27,7 @@
 "description":"A private equity strategy game. You run a $50 million fund: buy a company in Dallas/Fort Worth with a loan, buy the towns around it before two rival funds do, read real financial statements every quarter, and choose the moment to sell.",
 "genre":["Strategy","Business simulation","Educational"],"gamePlatform":["Web browser","Mobile web"],"applicationCategory":"Game","operatingSystem":"Any","playMode":"SinglePlayer","inLanguage":"en",
 "author":{"@type":"Person","name":"Kyle Becker"},
-"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},
-"trailer":{"@type":"VideoObject","name":"Buy and Build trailer","description":"Buy it. Build it. Sell it. A 75 second look at the game.","contentUrl":"https://buyandbuildgame.com/trailer.mp4","thumbnailUrl":"https://buyandbuildgame.com/trailer-poster.jpg","uploadDate":"2026-11-16"}}
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -91,9 +90,6 @@
   .points li::before { content: counter(step); display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--felt); color: var(--brass); font: 700 18px/1 var(--display); margin-bottom: 12px; }
   .points h2 { margin: 0 0 6px; font: 700 24px/1.15 var(--display); }
   .points p { margin: 0; color: var(--ink-2); font-size: 16px; }
-  .mentor { max-width: 1080px; margin: 28px auto 0; text-align: center; color: var(--soft); font-size: 16px; }
-  .points .mentor { color: var(--soft); } /* the rule for a paragraph on a paper card must not reach this line: it sits on felt */
-  .mentor strong { color: var(--plate); font-weight: 600; }
 
   .signup { background: var(--felt-2); padding: 0 24px 64px; }
   .signup form { max-width: 640px; margin: 0 auto; background: var(--plate); color: var(--ink); border-top: 4px double var(--brass-line); border-radius: 2px; padding: 22px 22px 20px; }
@@ -178,8 +174,10 @@
       <div class="actions">
         <a class="btn primary" href="/play/">Enter Game
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <!-- Watch Video is off while the trailer is remade (2026-11-22). To bring it back, put this button back:
         <button class="btn ghost" type="button" id="watch">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>Watch Video</button>
+        -->
       </div>
       <p class="free">Free. Plays in your browser on a computer or a phone. About 25 minutes.</p>
     </div>
@@ -191,7 +189,6 @@
       <li><h2>Build a territory</h2><p>Every town on the map holds one company. Buy it first and the town is yours. Two rival funds want the same towns.</p></li>
       <li><h2>Sell, and beat the line</h2><p>Read real financial statements every quarter. When buyers make offers, choose your moment. Finish above the investors' line and ahead of the rivals.</p></li>
     </ol>
-    <p class="mentor">Your mentor in the game is <strong>Adam Coffey</strong>, author of The Private Equity Playbook.</p>
   </section>
 
   <section class="see" aria-labelledby="see-title">
@@ -257,7 +254,7 @@
   const count = (name, props) => { try { window.posthog.capture(name, props); } catch (e) { /* a count is never worth an error */ } };
   document.querySelector('.btn.primary[href="/play/"]').addEventListener('click', () => count('enter_game_click'));
   document.getElementById('teams').addEventListener('click', () => count('teams_click'));
-  document.getElementById('watch').addEventListener('click', () => {
+  document.getElementById('watch')?.addEventListener('click', () => {
     count('watch_video_click');
     dialog.showModal();
     video.currentTime = 0;
