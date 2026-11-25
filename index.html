@@ -81,8 +81,12 @@
     text-decoration: none; cursor: pointer; border: 2px solid var(--brass); transition: transform .15s ease, background-color .15s ease; }
   .btn.primary { background: var(--brass); color: #10251e; }
   .btn.ghost { background: rgba(7,26,21,.55); color: var(--plate); }
+  .btn.quiet { min-height: 56px; padding: 0 22px; background: transparent; color: var(--plate); border-color: rgba(211,173,98,.55); font-weight: 400; font-size: 17px; }
+  .btn.primary.start { padding: 0 36px; font-size: 19px; box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+  .again { max-width: 1080px; margin: 30px auto 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .again p { margin: 0; color: var(--soft); font-size: 15px; }
   .btn svg { width: 20px; height: 20px; flex: 0 0 20px; }
-  @media (hover: hover) { .btn:hover { transform: translateY(-1px); } .btn.ghost:hover { background: rgba(211,173,98,.16); } .btn.primary:hover { background: #dfbb73; } }
+  @media (hover: hover) { .btn:hover { transform: translateY(-1px); } .btn.ghost:hover, .btn.quiet:hover { background: rgba(211,173,98,.16); } .btn.primary:hover { background: #dfbb73; } }
   .free { margin: 16px 0 0; font-size: 15px; color: var(--soft); }
 
   .points { background: var(--felt-2); border-top: 1px solid rgba(211,173,98,.3); padding: 56px 24px 64px; }
@@ -145,7 +149,8 @@
     .hero-bg::after { background: linear-gradient(0deg, rgba(7,26,21,.97) 0%, rgba(7,26,21,.9) 48%, rgba(7,26,21,.2) 78%, rgba(7,26,21,.05) 100%); }
     .frame { inset: 10px; }
     .words { padding: 0 22px 46px; }
-    .actions { flex-direction: column; }
+    .actions { flex-direction: column; margin-top: 28px; gap: 10px; }
+    .btn.quiet { min-height: 48px; }
     .btn { width: 100%; }
     .points ol { grid-template-columns: 1fr; }
     .see { padding: 44px 16px 48px; }
@@ -173,12 +178,12 @@
       <p class="tag">Buy it. Build it. Sell it.</p>
       <p class="lede">You run a $50 million fund. Buy a company in Dallas/Fort Worth, buy the towns around it before two rival funds do, and choose the moment to sell.</p>
       <div class="actions">
-        <a class="btn primary" href="/play/">Enter Game
+        <a class="btn primary start" href="/play/?start=deal" data-place="hero">Start a deal
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <button class="btn ghost" type="button" id="watch">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>Watch Video</button>
+        <button class="btn quiet" type="button" id="watch">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>Watch the trailer</button>
       </div>
-      <p class="free">Free. Plays in your browser on a computer or a phone. About 25 minutes.</p>
+      <p class="free">Free. No account needed. About 25 minutes, on a phone or a computer.</p>
     </div>
   </section>
 
@@ -198,6 +203,11 @@
       <figure><img src="/shots/town.jpg" width="780" height="1280" loading="lazy" alt="The card for one town on a phone, with the add-on for sale there, its price and the button that buys it."><figcaption>Tap a town to see its company and buy it.</figcaption></figure>
       <figure><img src="/shots/books.jpg" width="780" height="1280" loading="lazy" alt="The key private equity metrics page on a phone, with profit growth, the loan gauge and the yearly return."><figcaption>Read the numbers every quarter.</figcaption></figure>
       <figure><img src="/shots/result.jpg" width="780" height="1280" loading="lazy" alt="The end of a game on a phone: fund value against the investors' line, and how the three funds finished."><figcaption>Beat the investors' line, then the rival funds.</figcaption></figure>
+    </div>
+    <div class="again">
+      <a class="btn primary start" href="/play/?start=deal" data-place="shots">Start a deal
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p>Free. No account needed. The game opens on your first deal.</p>
     </div>
   </section>
 
@@ -251,7 +261,8 @@
   const dialog = document.getElementById('player');
   const video = document.getElementById('video');
   const count = (name, props) => { try { window.posthog.capture(name, props); } catch (e) { /* a count is never worth an error */ } };
-  document.querySelector('.btn.primary[href="/play/"]').addEventListener('click', () => count('enter_game_click'));
+  // Start a deal opens the game past its title page. The count keeps its old name, so the numbers before and after can be compared.
+  document.querySelectorAll('a.start').forEach((a) => a.addEventListener('click', () => count('enter_game_click', { place: a.dataset.place, label: 'start_deal' })));
   document.getElementById('teams').addEventListener('click', () => count('teams_click'));
   document.getElementById('watch')?.addEventListener('click', () => {
     count('watch_video_click');
