@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#10352b">
 <title>Buy and Build for teams and classes: teach a whole deal in one sitting</title>
-<meta name="description" content="Run Buy and Build with a private equity team or a business school class. Every player runs a $50 million fund in the same market, a private leaderboard ranks the room, and a debrief ties it to real deals.">
+<meta name="description" content="Run Buy and Build with a private equity team or a business school class, with a $299 classroom license or a pilot. Every player runs a $50 million fund in the same market, a private leaderboard ranks the room, and a debrief ties it to real deals.">
 <link rel="canonical" href="https://buyandbuildgame.com/teams/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -103,12 +103,24 @@
   .small a { color: var(--ink); }
   .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
+  .offer { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 40px; align-items: start; }
+  .offer ul { margin: 18px 0 0; padding-left: 20px; color: #e9e2cf; }
+  .offer li { margin: 6px 0; }
+  .price { background: var(--plate); color: var(--ink); border-top: 4px double var(--brass-line); border-radius: 2px; padding: 24px 22px 22px; }
+  .price h3 { margin: 0; font: 700 26px/1.15 var(--display); }
+  .price .amount { margin: 14px 0 2px; font: 700 54px/1 var(--display); }
+  .price .per { margin: 0; color: var(--ink-2); font-size: 16px; }
+  .price .btn { width: 100%; margin-top: 20px; }
+  .paid { margin: 0 0 24px; background: var(--plate); color: var(--ink); border-radius: 2px; padding: 16px 18px; font-weight: 600; }
+  .paid[hidden] { display: none; }
+
   footer { padding: 26px 24px 34px; text-align: center; font-size: 14px; color: var(--soft); background: var(--felt-3); }
   footer a { color: var(--brass); }
 
   @media (max-width: 820px) {
     .hero { padding: 48px 0 44px; }
-    .cards, .learn, .ask, .two { grid-template-columns: 1fr; }
+    .cards, .learn, .ask, .offer, .two { grid-template-columns: 1fr; }
+    .offer { gap: 28px; }
     .ask { gap: 28px; }
     section.band { padding: 44px 0; }
     .top nav { gap: 16px; font-size: 15px; }
@@ -132,7 +144,8 @@
       <div class="rule" aria-hidden="true"></div>
       <p class="lede">Buy and Build is a strategy game about private equity. Each player runs a $50 million fund: buys a company with a loan, buys add-ons, reads the statements every quarter, and chooses when to sell. Your group plays at the same time, and a private leaderboard ranks the room.</p>
       <div class="actions">
-        <a class="btn primary" href="#ask">Ask about a pilot</a>
+        <a class="btn primary" href="#license">Run it in your class</a>
+        <a class="btn ghost" href="#ask">Ask about a pilot</a>
         <a class="btn ghost" href="/play/">Play it first</a>
       </div>
     </div>
@@ -172,7 +185,7 @@
   <section class="band alt" aria-labelledby="how">
     <div class="wrap">
       <h2 id="how">How a session runs</h2>
-      <p class="sub">You can run it yourself with the session guide, or ask for a pilot with a live debrief.</p>
+      <p class="sub">You can run it yourself with the session guide, buy a classroom license, or ask for a pilot with a live debrief.</p>
       <ol class="steps">
         <li><div><strong>Make a group</strong><span>In the game, make a group and get a group code and a link. It takes a minute.</span></div></li>
         <li><div><strong>Players join</strong><span>They open the link on a laptop or a phone and make an account. There is nothing to install.</span></div></li>
@@ -184,7 +197,34 @@
     </div>
   </section>
 
-  <section class="band" id="ask" aria-labelledby="ask-title">
+  <section class="band" id="license" aria-labelledby="license-title">
+    <div class="wrap">
+      <p class="paid" id="paid" role="status" hidden>Thank you. Your payment went through. Check your email: the group code, the link for your players and the session guide are on the way.</p>
+      <div class="offer">
+        <div>
+          <h2 id="license-title">Run it in your class</h2>
+          <p class="sub" style="margin-bottom:0">A classroom license lets you run Buy and Build with one class or team for one term. Pay once by card, and the group code arrives by email a minute later.</p>
+          <ul>
+            <li>A group for your class, with its own group code and link</li>
+            <li>A leaderboard that only your group can see</li>
+            <li>The session guide and the debrief questions</li>
+            <li>Help by email from Kyle Becker, who built the game, all term</li>
+            <li>An invoice for your records</li>
+          </ul>
+          <p class="sub" style="margin:18px 0 0">Players need a free account and a browser. They pay nothing.</p>
+        </div>
+        <div class="price">
+          <h3>Classroom license</h3>
+          <p class="amount">$299</p>
+          <p class="per">For one class or team, for one term. Paid once.</p>
+          <a class="btn primary" id="buy" href="https://buy.stripe.com/bJecN51pQ4YZ4KN24z7Vm06" rel="noopener">Buy a classroom license</a>
+          <p class="small">Secure checkout by Stripe. You type the name of your class there. For a firm, a whole department or a live debrief, <a href="#ask">ask about a pilot</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band alt" id="ask" aria-labelledby="ask-title">
     <div class="wrap ask">
       <div>
         <h2 id="ask-title">Ask about a pilot</h2>
@@ -225,6 +265,11 @@
   const SERVER = { url: 'https://nxismujfgnfspguglbby.supabase.co', key: 'sb_publishable_F4Qb-Z7PKzpxOqO4VZYkPw_zMDtoj3L' };
   const count = (name, props) => { try { window.posthog.capture(name, props); } catch (e) { /* a count is never worth an error */ } };
   const $ = (id) => document.getElementById(id);
+  if (new URLSearchParams(location.search).get('paid') === '1') {
+    $('paid').hidden = false;
+    count('license_paid_return');
+  }
+  $('buy').addEventListener('click', () => count('license_checkout_click'));
   const form = $('pilot'), send = $('f-send'), status = $('f-status');
   const say = (text, tone) => { status.textContent = text; status.className = 'status ' + tone; };
   form.addEventListener('submit', async (e) => {
