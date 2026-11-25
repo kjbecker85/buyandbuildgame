@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#10352b">
 <title>Buy and Build: a private equity strategy game, free in your browser</title>
-<meta name="description" content="A private equity strategy game. Buy a company in Dallas/Fort Worth, buy the towns around it, race two rival funds, and sell. Free to play in your browser.">
+<meta name="description" content="A free private equity strategy game that plays in your browser. You run a $50 million fund: buy a company in Dallas/Fort Worth, grow it by buying smaller companies in the towns around it before two rival funds do, and choose when to sell.">
 <link rel="canonical" href="https://buyandbuildgame.com/">
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="preload" as="image" href="/landing.jpg" fetchpriority="high">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Buy and Build">
 <meta property="og:url" content="https://buyandbuildgame.com/">
 <meta property="og:title" content="Buy and Build">
-<meta property="og:description" content="A private equity strategy game. Buy a company, build it, beat two rival funds, and sell. Free to play in your browser.">
+<meta property="og:description" content="A free private equity strategy game that plays in your browser. Run a $50 million fund, buy a company, grow it by buying smaller companies, sell it, and finish ahead of two rival funds.">
 <meta property="og:image" content="https://buyandbuildgame.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"VideoGame","name":"Buy and Build","url":"https://buyandbuildgame.com/","image":"https://buyandbuildgame.com/og.jpg",
-"description":"A private equity strategy game. You run a $50 million fund: buy a company in Dallas/Fort Worth with a loan, buy the towns around it before two rival funds do, read real financial statements every quarter, and choose the moment to sell.",
+"description":"A private equity strategy game. You run a $50 million fund: buy a company in Dallas/Fort Worth with a bank loan, buy smaller companies in the towns around it before two rival funds do, read the company's financial statements every quarter, and choose when to sell.",
 "genre":["Strategy","Business simulation","Educational"],"gamePlatform":["Web browser","Mobile web"],"applicationCategory":"Game","operatingSystem":"Any","playMode":"SinglePlayer","inLanguage":"en",
 "author":{"@type":"Person","name":"Kyle Becker"},
 "offers":{"@type":"Offer","price":"0","priceCurrency":"USD","availability":"https://schema.org/InStock"},
@@ -33,12 +33,12 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Is Buy and Build free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The whole game is free to play and has no ads."}},
-{"@type":"Question","name":"How long does a game take?","acceptedAnswer":{"@type":"Answer","text":"A quick deal is one company and takes about 25 minutes. The full fund is ten years of deals and takes 60 to 90 minutes. It saves as you go."}},
-{"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No. You can play the whole game as a guest. An account keeps your career on every device and puts your best score on the leaderboard."}},
+{"@type":"Question","name":"How long does a game take?","acceptedAnswer":{"@type":"Answer","text":"There are two ways to play. A quick deal is one company, from the purchase to the sale, and takes about 25 minutes. The full fund runs for ten years, buying and selling one company after another, and takes 60 to 90 minutes. The full fund saves as you go, so you can stop and come back later."}},
+{"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No. You can play the whole game as a guest. A free account saves your career, meaning your rank and your career points, on every device, and it puts your best score on the leaderboard."}},
 {"@type":"Question","name":"Does it work on a phone?","acceptedAnswer":{"@type":"Answer","text":"Yes. It plays in the browser on a phone, a tablet or a computer. There is nothing to install."}},
-{"@type":"Question","name":"Do I need to know finance?","acceptedAnswer":{"@type":"Answer","text":"No. Each idea is explained in plain words at the moment you need it."}},
-{"@type":"Question","name":"What will I learn?","acceptedAnswer":{"@type":"Answer","text":"How a private equity deal works from the purchase to the sale: what a loan does to the return, why add-ons raise the price a buyer pays, how to read the three financial statements, and when to sell."}},
-{"@type":"Question","name":"Can I use it with a team or a class?","acceptedAnswer":{"@type":"Answer","text":"Yes. Make a group in the game, share its link, and a private leaderboard ranks your players. There is a session guide with debrief questions."}}]}
+{"@type":"Question","name":"Do I need to know finance?","acceptedAnswer":{"@type":"Answer","text":"No. The game explains each idea in plain words at the moment you need it, and a mentor gives advice when you make a decision or a mistake."}},
+{"@type":"Question","name":"What will I learn?","acceptedAnswer":{"@type":"Answer","text":"You learn how a private equity deal works from the purchase to the sale. That covers what a bank loan does to your return, why buying add-ons raises the price a buyer will pay for your company, how to read the three financial statements (profit and loss, cash flow and the balance sheet), and how to choose when to sell."}},
+{"@type":"Question","name":"Can I use it with a team or a class?","acceptedAnswer":{"@type":"Answer","text":"Yes. Make a group in the game and share its link with your players. A leaderboard that only your group can see ranks them. There is a free session guide with questions for the discussion afterward."}}]}
 </script>
 <script>
   // An old link to the game with its settings (?seed=7) goes straight into the game.
@@ -176,38 +176,38 @@
       <h1 id="title">Buy and Build</h1>
       <div class="rule" aria-hidden="true"></div>
       <p class="tag">Buy it. Build it. Sell it.</p>
-      <p class="lede">You run a $50 million fund. Buy a company in Dallas/Fort Worth, buy the towns around it before two rival funds do, and choose the moment to sell.</p>
+      <p class="lede">Private equity is the business of buying a company with investors' money and a bank loan, growing it, and selling it a few years later for more. In Buy and Build you run a private equity fund with $50 million to invest. You buy a company in Dallas/Fort Worth, buy smaller companies in the towns around it before two rival funds do, and choose when to sell.</p>
       <div class="actions">
         <a class="btn primary start" href="/play/?start=deal" data-place="hero">Start a deal
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <button class="btn quiet" type="button" id="watch">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z" fill="currentColor"/></svg>Watch the trailer</button>
       </div>
-      <p class="free">Free. No account needed. About 25 minutes, on a phone or a computer.</p>
+      <p class="free">It is free and needs no account. A quick deal takes about 25 minutes on a phone or a computer.</p>
     </div>
   </section>
 
   <section class="points" aria-label="How the game works">
     <ol>
-      <li><h2>Buy a company</h2><p>Pick one of three companies for sale, check the books, and decide how much the bank should lend.</p></li>
-      <li><h2>Build a territory</h2><p>Every town on the map holds one company. Buy it first and the town is yours. Two rival funds want the same towns.</p></li>
-      <li><h2>Sell, and beat the line</h2><p>Read real financial statements every quarter. When buyers make offers, choose your moment. Finish above the investors' line and ahead of the rivals.</p></li>
+      <li><h2>Buy a company</h2><p>Pick an industry, such as heating and air conditioning or dental practices. Three companies in it are for sale, each at a different price. Choose one, pay to check its books for hidden problems if you want, and decide how much to borrow from the bank.</p></li>
+      <li><h2>Build a territory</h2><p>Each town on the map holds one company. The smaller ones, called add-ons, come up for sale from Year 2 to Year 5. Buy an add-on before one of the two rival funds does, and its town is yours. Each add-on makes your company bigger, and buyers pay more for each dollar of profit in a bigger company.</p></li>
+      <li><h2>Sell, and beat the investors' line</h2><p>Each turn is one quarter of a year, and the company's financial statements update every quarter. From Year 4 to Year 7 buyers make offers, and you choose when to sell. To win, your fund must grow at least 8 percent a year, which is the investors' line, and then finish ahead of the two rival funds.</p></li>
     </ol>
   </section>
 
   <section class="see" aria-labelledby="see-title">
     <h2 id="see-title">See the game</h2>
-    <p class="sub">A turn is taken on the map. The numbers behind it are a full set of financial statements.</p>
+    <p class="sub">You take each turn on a map of Dallas/Fort Worth towns. Every number behind the map comes from the company's financial statements.</p>
     <div class="grid">
-      <figure class="wide"><img src="/shots/turn.jpg" width="1280" height="800" loading="lazy" alt="A turn in the game. A map of twelve Dallas/Fort Worth towns shows which fund owns each one, beside the player's fund value, the investors' line and the moves for the quarter."><figcaption>Your turn. Every town holds one company, and the first fund to buy it owns the town.</figcaption></figure>
-      <figure><img src="/shots/town.jpg" width="780" height="1280" loading="lazy" alt="The card for one town on a phone, with the add-on for sale there, its price and the button that buys it."><figcaption>Tap a town to see its company and buy it.</figcaption></figure>
-      <figure><img src="/shots/books.jpg" width="780" height="1280" loading="lazy" alt="The key private equity metrics page on a phone, with profit growth, the loan gauge and the yearly return."><figcaption>Read the numbers every quarter.</figcaption></figure>
-      <figure><img src="/shots/result.jpg" width="780" height="1280" loading="lazy" alt="The end of a game on a phone: fund value against the investors' line, and how the three funds finished."><figcaption>Beat the investors' line, then the rival funds.</figcaption></figure>
+      <figure class="wide"><img src="/shots/turn.jpg" width="1280" height="800" loading="lazy" alt="A turn in the game. A map of twelve Dallas/Fort Worth towns shows which fund owns each one, beside the player's fund value, the investors' line and the moves for the quarter."><figcaption>Your turn. Each town holds one company, and the first fund to buy that company owns the town. The map shows which fund owns each one.</figcaption></figure>
+      <figure><img src="/shots/town.jpg" width="780" height="1280" loading="lazy" alt="The card for one town on a phone, with the add-on for sale there, its price and the button that buys it."><figcaption>Tap a town to see the add-on for sale there and its price. You buy it from the same card.</figcaption></figure>
+      <figure><img src="/shots/books.jpg" width="780" height="1280" loading="lazy" alt="The key private equity metrics page on a phone, with profit growth, the loan gauge and the yearly return."><figcaption>Every quarter, check how fast profit is growing, how close the loan is to the bank's limit, and the fund's yearly return.</figcaption></figure>
+      <figure><img src="/shots/result.jpg" width="780" height="1280" loading="lazy" alt="The end of a game on a phone: fund value against the investors' line, and how the three funds finished."><figcaption>The end of a game. Your fund must finish above the investors' line, and then it is ranked against the two rival funds.</figcaption></figure>
     </div>
     <div class="again">
       <a class="btn primary start" href="/play/?start=deal" data-place="shots">Start a deal
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <p>Free. No account needed. The game opens on your first deal.</p>
+      <p>It is free and needs no account. The button takes you straight to your first deal.</p>
     </div>
   </section>
 
@@ -215,7 +215,7 @@
     <div class="in">
       <div>
         <h2 id="groups-title">For teams and classes</h2>
-        <p>Play with a private equity team or a business school class. Make a group, share its link, and a private leaderboard ranks the room. A session guide and debrief questions are ready.</p>
+        <p>Buy and Build works as a group exercise for a private equity team or a business school class. You make a group in the game and share its link. Everyone plays at the same time, and a leaderboard that only your group can see ranks the players. A free session guide gives you a plan for the session and questions for the discussion afterward.</p>
       </div>
       <a class="btn ghost" href="/teams/" id="teams">See how a session runs</a>
     </div>
@@ -225,25 +225,25 @@
     <div class="in">
       <h2 id="faq-title">Questions</h2>
       <details><summary>Is it free?</summary><p>Yes. The whole game is free to play and has no ads.</p></details>
-      <details><summary>How long does a game take?</summary><p>A quick deal is one company and takes about 25 minutes. The full fund is ten years of deals and takes 60 to 90 minutes. It saves as you go.</p></details>
-      <details><summary>Do I need an account?</summary><p>No. You can play the whole game as a guest. An account keeps your career on every device and puts your best score on the leaderboard.</p></details>
+      <details><summary>How long does a game take?</summary><p>There are two ways to play. A quick deal is one company, from the purchase to the sale, and takes about 25 minutes. The full fund runs for ten years, buying and selling one company after another, and takes 60 to 90 minutes. The full fund saves as you go, so you can stop and come back later.</p></details>
+      <details><summary>Do I need an account?</summary><p>No. You can play the whole game as a guest. A free account saves your career, meaning your rank and your career points, on every device, and it puts your best score on the leaderboard.</p></details>
       <details><summary>Does it work on a phone?</summary><p>Yes. It plays in the browser on a phone, a tablet or a computer. There is nothing to install.</p></details>
-      <details><summary>Do I need to know finance?</summary><p>No. Each idea is explained in plain words at the moment you need it.</p></details>
-      <details><summary>What will I learn?</summary><p>How a private equity deal works from the purchase to the sale: what a loan does to the return, why add-ons raise the price a buyer pays, how to read the three financial statements, and when to sell. The game teaches how deals work. It does not give investment advice.</p></details>
-      <details><summary>Can I use it with a team or a class?</summary><p>Yes. Make a group in the game, share its link, and a private leaderboard ranks your players. <a href="/teams/">See the page for teams and classes</a>.</p></details>
+      <details><summary>Do I need to know finance?</summary><p>No. The game explains each idea in plain words at the moment you need it, and a mentor gives advice when you make a decision or a mistake.</p></details>
+      <details><summary>What will I learn?</summary><p>You learn how a private equity deal works from the purchase to the sale. That covers what a bank loan does to your return, why buying add-ons raises the price a buyer will pay for your company, how to read the three financial statements (profit and loss, cash flow and the balance sheet), and how to choose when to sell. The game teaches how deals work. It does not give investment advice.</p></details>
+      <details><summary>Can I use it with a team or a class?</summary><p>Yes. Make a group in the game and share its link with your players. A leaderboard that only your group can see ranks them. <a href="/teams/">See the page for teams and classes</a>.</p></details>
     </div>
   </section>
 
   <section class="signup" aria-labelledby="signup-title">
     <form id="signup" novalidate>
       <h2 id="signup-title">Game news by email</h2>
-      <p>Get new industries and the full fund leaderboard by email. A few emails a year.</p>
+      <p>Hear by email when the game adds a new industry, and see who leads the full fund leaderboard. Expect a few emails a year.</p>
       <div class="row">
         <input id="signup-email" type="email" name="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" maxlength="254" placeholder="Your email" aria-label="Your email" required>
         <button class="btn primary" type="submit" id="signup-send">Send me news</button>
       </div>
       <p class="status" id="signup-status" role="status"></p>
-      <p class="small">We use your email only to send game news. Ask us and we remove it. <a href="/privacy.html">Privacy</a></p>
+      <p class="small">We use your email only to send game news, and we remove it whenever you ask. <a href="/privacy.html">Privacy</a></p>
     </form>
   </section>
 </main>
